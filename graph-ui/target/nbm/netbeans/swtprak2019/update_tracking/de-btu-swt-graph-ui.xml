@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><module codename="de.btu.swt.graph.ui">
-    <module_version install_time="1554655109362" last="true" origin="installer" specification_version="0.1">
-        <file crc="431881192" name="config/Modules/de-btu-swt-graph-ui.xml"/>
-        <file crc="3186129683" name="modules/de-btu-swt-graph-ui.jar"/>
-    </module_version>
-</module>
