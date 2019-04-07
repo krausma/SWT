@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="de.btu.swt.swt.prak.2019.branding">
+    <module_version install_time="1554655107932" last="true" origin="installer" specification_version="0.1">
+        <file crc="1505233489" name="config/Modules/de-btu-swt-swt-prak-2019-branding.xml"/>
+        <file crc="2222582811" name="core/locale/core_swtprak2019.jar"/>
+        <file crc="1710822068" name="modules/de-btu-swt-swt-prak-2019-branding.jar"/>
+        <file crc="924309715" name="modules/locale/org-netbeans-core-windows_swtprak2019.jar"/>
+        <file crc="2519422682" name="modules/locale/org-netbeans-core_swtprak2019.jar"/>
+    </module_version>
+</module>

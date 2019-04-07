@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Localizing-Bundle: de/btu/swt/graph/api/Bundle.properti
+ es
+OpenIDE-Module-Specification-Version: 0.1
+OpenIDE-Module-Implementation-Version: 0.1-20190407
+OpenIDE-Module-Build-Version: 201904071638
+OpenIDE-Module: de.btu.swt.graph.api
+OpenIDE-Module-Public-Packages: de.btu.swt.graph.api.*
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: de.btu.swt
+OpenIDE-Module-Name: graph-api
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.27.1, org.openide.util.lookup > 8.33.1
+
