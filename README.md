@@ -2,7 +2,8 @@
 
 Gruppe: XX
 
-Gruppenmitglieder:
-Vorname Nachname
-Vorname Nachname
-Vorname Nachname
+Gruppenmitglieder:  
+Vorname Nachname  
+Vorname Nachname  
+Vorname Nachname  
+ 
