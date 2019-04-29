@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 public interface GraphNode {
 
     /**
-     * Each graph element is defined by unique long identifier. Multiple graph
+     * Each graph element is defined by a unique long identifier. Multiple graph
      * nodes with the same id cannot be registered to the same model.
      *
      * @return The node id.
@@ -59,7 +59,7 @@ public interface GraphNode {
     GraphNode getParent();
 
     /**
-     * sets parent everytime the Node is added or moved
+     * Sets parent every time the Node is added, moved or removed.
      *
      * @param parent
      */
@@ -74,7 +74,7 @@ public interface GraphNode {
     boolean hasParent();
 
     /**
-     * Is true, when node has no children.
+     * Is true, when the node has no children.
      *
      * @return {@code true} if the node is a leaf (has no children) or
      * {@code false} otherwise.

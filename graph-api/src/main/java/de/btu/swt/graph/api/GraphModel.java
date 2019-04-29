@@ -102,26 +102,4 @@ public interface GraphModel {
      * @param metric The metric to remove.
      */
     void removeMetric(Metric metric);
-
-    /**
-     *
-     * @param key
-     * @param name
-     * @return the new Metric with given key and name
-     */
-    Metric createMetric(String key, String name);
-
-    /**
-     *
-     * @param name
-     * @return a GraphNode Parent with given name and a unique id
-     */
-    GraphNode createParent(String name);
-
-    /**
-     *
-     * @param name
-     * @return a GraphNode Leaf with given name and a unique id
-     */
-    GraphNode createLeaf(String name);
 }
