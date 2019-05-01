@@ -1,9 +1,8 @@
 # SWT Praktikum SoSe 2019
 
-Gruppe: XX
+Gruppe: Lambda-Erleuchtete
 
 Gruppenmitglieder:  
-Vorname Nachname  
-Vorname Nachname  
-Vorname Nachname  
+Johannes Kuhn  
+Marc Krause 
  
