@@ -23,7 +23,8 @@ public class GraphServiceImpl implements GraphService {
 
     @Override
     public void createDefaultGraph1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Bruuuhh");
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
