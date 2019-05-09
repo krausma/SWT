@@ -9,35 +9,29 @@ package de.btu.swt.graph.impl;
 import de.btu.swt.graph.api.GraphNode;
 import java.util.Stack;
 import java.util.stream.Stream;
-
+import de.btu.swt.graph.impl.GraphNodeImpl;
 
 /**
  *
  * @author Sebastian Brueggemann <bruegber@b-tu.de>
  */
 
-public class Parent implements GraphNode {
-    private int keyId = 0;
-    private String nodeName = "Nobody";
-    private Parent p;
-    private boolean root = true;
-    public Stack<GraphNode> Children = new Stack();
+public class Parent extends GraphNodeImpl {
+    private int keyId = 0; //unique ID of Node
+    private String nodeName = "Nobody"; // Name of Node
+    private Parent p; // eventual parent of Node
+    private boolean root = true; //if Node Root
+    public Stack<GraphNode> Children = new Stack(); //List of Children of Node
             
+    //constructor of the Node
     public Parent (int id, String name){
         keyId = id;
         nodeName = name;
     }
     
-    @Override
-    public long getID() {
-        return keyId;
-    }
-
-    @Override
-    public String getName() {
-        return nodeName;
-    }
-
+    // returns the ID
+   
+    // returns the Child number "index" if it exists
     @Override
     public GraphNode getChildAt(int index) {
         if(index < 0 || index >= Children.size()){
@@ -46,43 +40,36 @@ public class Parent implements GraphNode {
             return Children.get(index);
         }
     }
-
+    
+    // returns the number of childs
     @Override
     public int getChildCount() {
        return p.Children.size();
     }
-
+    
+    //returns all childs of this node
     @Override
     public Stream<GraphNode> children() {
         return Children.stream();
     }
 
-    @Override
-    public GraphNode getParent() {
-        if(root == false){
-            return p;
-        }else{
-            return null;
-        }
-    }
-
-    @Override
-    public void setParent(GraphNode parent) {
-        p = (Parent)parent;
-        root = false;
-        p.Children.addElement(this);
-    }
-
-    @Override
-    public boolean hasParent() {
-        return !root;
-    }
-
+ 
+   
+    
+    // checks if a parent  exists for this node
+ 
+    
+    // checks if this node is a leaf/has no children
     @Override
     public boolean isLeaf() {
-        return false;
+        if(Children.size()==0){
+            return true;
+        }else{
+            return false;
+        }
     }
-
+    
+    // checks if imput is the parent of this node
     @Override
     public boolean isParentOf(GraphNode node) {
         if(Children.search(node) == -1){
@@ -91,7 +78,8 @@ public class Parent implements GraphNode {
             return true;
         }
     }
-
+    
+    // returns the child index of input if it exists
     @Override
     public int getIndexOf(GraphNode child) {
         return Children.search(child);
@@ -99,38 +87,40 @@ public class Parent implements GraphNode {
 
     @Override
     public Stream<GraphNode> descendants() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Stack<GraphNode> des = new Stack();
+        
+        des.push(this);
+       
+        if (this.isLeaf()){
+            return des.stream();
+            
+        
+        
+        }else{
+            
+            
+            for(int i = 1;i <= Children.size();i++){
+            des.addAll((Stack<GraphNode>) Children.elementAt(i).descendants());
+            
+            }
+            return des.stream();
+        }
     }
 
     @Override
     public Stream<GraphNode> leafs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Stack<GraphNode> lea = new Stack(); // stack to receive descendents of this node
+        Stack<GraphNode> out = new Stack(); // stack to return
+        lea = (Stack<GraphNode>) this.descendants(); // get all desendants
+        
 
-    @Override
-    public Stream<GraphNode> ancestors() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // chekc for leafs in desendents and put them into out
+        for(int i = 1; i <= lea.size();i++){ 
+            if(lea.elementAt(i).isLeaf()){
+                out.push(lea.elementAt(i));
+            }
+        }
+        return out.stream();
     }
-
-    @Override
-    public Stream<GraphNode> siblings() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean isAncestorOf(GraphNode node) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getDepth() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public long getWeight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 
 }
