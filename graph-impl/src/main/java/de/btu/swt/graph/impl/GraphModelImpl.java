@@ -114,7 +114,6 @@ public class GraphModelImpl implements GraphModel{
         if(! contains(newParent)) { return; }
         
         node.setParent(newParent);
-   
     }
 
     @Override
