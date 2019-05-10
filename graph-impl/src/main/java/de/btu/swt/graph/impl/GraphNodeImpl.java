@@ -88,7 +88,7 @@ public abstract class GraphNodeImpl implements GraphNode {
     public Stream<GraphNode> ancestors() {
          Stack<GraphNode> out = new Stack(); // stack to return
          out.push(this);
-         if(this.isLeaf() == false){
+         if(this.root == false){
              out.addAll((Stack<GraphNode>) this.ancestors());
          }
          return out.stream();
