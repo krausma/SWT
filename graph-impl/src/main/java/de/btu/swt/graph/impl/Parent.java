@@ -10,6 +10,9 @@ import de.btu.swt.graph.api.GraphNode;
 import java.util.Stack;
 import java.util.stream.Stream;
 import de.btu.swt.graph.impl.GraphNodeImpl;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -17,16 +20,17 @@ import de.btu.swt.graph.impl.GraphNodeImpl;
  */
 
 public class Parent extends GraphNodeImpl {
-    private int keyId = 0; //unique ID of Node
-    private String nodeName = "Nobody"; // Name of Node
+    private long keyId; //unique ID of Node
+    private String nodeName; // Name of Node
     private Parent p; // eventual parent of Node
     private boolean root = true; //if Node Root
-    public Stack<GraphNode> Children = new Stack(); //List of Children of Node
+    public List<GraphNode> Children; //List of Children of Node
             
     //constructor of the Node
-    public Parent (int id, String name){
+    public Parent (long id, String name){
         keyId = id;
         nodeName = name;
+        Children = new ArrayList<GraphNode>();
     }
     
     // returns the ID
@@ -62,7 +66,7 @@ public class Parent extends GraphNodeImpl {
     // checks if this node is a leaf/has no children
     @Override
     public boolean isLeaf() {
-        if(Children.size()==0){
+        if(Children.size()== 0){
             return true;
         }else{
             return false;
@@ -72,24 +76,24 @@ public class Parent extends GraphNodeImpl {
     // checks if imput is the parent of this node
     @Override
     public boolean isParentOf(GraphNode node) {
-        if(Children.search(node) == -1){
-            return false;
-        }else{
-            return true;
-        }
+        return Children.contains(node);
     }
     
     // returns the child index of input if it exists
     @Override
     public int getIndexOf(GraphNode child) {
-        return Children.search(child);
+        if(this.isParentOf(child)){
+            return Children.indexOf(child);
+        }else{
+            return (-1);
+        }
     }
 
     @Override
     public Stream<GraphNode> descendants() {
-        Stack<GraphNode> des = new Stack();
+        List<GraphNode> des = new ArrayList<GraphNode>();
         
-        des.push(this);
+        des.add(this);
        
         if (this.isLeaf()){
             return des.stream();
@@ -100,7 +104,7 @@ public class Parent extends GraphNodeImpl {
             
             
             for(int i = 1;i <= Children.size();i++){
-            des.addAll((Stack<GraphNode>) Children.elementAt(i).descendants());
+            des.addAll(this.Children.get(i).descendants().collect(Collectors.toList()));
             
             }
             return des.stream();
@@ -109,18 +113,7 @@ public class Parent extends GraphNodeImpl {
 
     @Override
     public Stream<GraphNode> leafs() {
-        Stack<GraphNode> lea = new Stack(); // stack to receive descendents of this node
-        Stack<GraphNode> out = new Stack(); // stack to return
-        lea = (Stack<GraphNode>) this.descendants(); // get all desendants
-        
-
-        // chekc for leafs in desendents and put them into out
-        for(int i = 1; i <= lea.size();i++){ 
-            if(lea.elementAt(i).isLeaf()){
-                out.push(lea.elementAt(i));
-            }
-        }
-        return out.stream();
+      return this.descendants().filter(l -> l.isLeaf());
     }
 
 }

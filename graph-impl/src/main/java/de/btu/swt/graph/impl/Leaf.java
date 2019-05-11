@@ -17,12 +17,12 @@ import java.util.stream.Stream;
  */
 
 public class Leaf extends GraphNodeImpl {
-    private int keyId;
+    private long keyId;
     private String nodeName;
     private Parent p;
     private boolean root = true;
     
-    public Leaf (int id, String name){
+    public Leaf (long id, String name){
         keyId = id;
         nodeName = name;
     }
@@ -41,7 +41,7 @@ public class Leaf extends GraphNodeImpl {
 
     @Override
     public Stream<GraphNode> children() {
-        return null;
+        return Stream.of();
     }
 
 

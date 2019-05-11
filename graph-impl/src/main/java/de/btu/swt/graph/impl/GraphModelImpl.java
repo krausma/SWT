@@ -12,6 +12,7 @@ import de.btu.swt.graph.api.Schema;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 import java.util.stream.Stream;
 
 /**
@@ -22,7 +23,13 @@ public class GraphModelImpl implements GraphModel{
 
     Schema schema;
     GraphNode root;
+  
     
+    
+    public GraphModelImpl(GraphNode RootNode){
+        root = RootNode;
+    
+    }
     
     @Override
     public Schema nodeSchema() {
@@ -86,7 +93,7 @@ public class GraphModelImpl implements GraphModel{
         if(parent == null) {
             
             node.setParent(root);
-            return false;
+            return true;
         }
         node.setParent(parent);
    

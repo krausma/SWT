@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  */
 
 public abstract class GraphNodeImpl implements GraphNode {
-    private int keyId;
+    private long keyId;
     private String nodeName;
     private Parent p; // eventual parent of Node
     private boolean root = true;
@@ -56,12 +56,12 @@ public abstract class GraphNodeImpl implements GraphNode {
     @Override
     public void setParent(GraphNode parent) {
         // check if the object is a leaf to potentially remove object from the child-list of former parent
-       if(this.isLeaf() == false){
+       if(this.root == false){
            this.p.Children.remove(this);
        }
         p = (Parent)parent;
         root = false;
-        p.Children.addElement(this);
+        p.Children.add(this);
     }
 
    @Override
