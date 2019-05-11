@@ -33,8 +33,8 @@ public interface GraphModel {
     int nodeCount();
 
     /**
-     * @param id The id of the requested getNode.
-     * @return The getNode with the given id.
+     * @param id The id of the requested node.
+     * @return The node with the given id.
      */
     GraphNode getNode(int id);
 
@@ -44,37 +44,37 @@ public interface GraphModel {
     GraphNode getRoot();
 
     /**
-     * @param node The getNode that may be part of this graph.
-     * @return true if the given getNode is contained in this graph or false
+     * @param node The node that may be part of this graph.
+     * @return true if the given node is contained in this graph or false
      * otherwise.
      */
     boolean contains(GraphNode node);
 
     /**
-     * Adds the given getNode to this graph. The parent getNode must exist in
-     * the graph to become the parent getNode of {@code getNode}. If
-     * {@code null} is passed as argument for parent the getNode is attached to
-     * the root getNode.
+     * Adds the given node to this graph. The parent node must exist in
+     * the graph to become the parent node of {@code node}. If
+     * {@code null} is passed as argument for parent the node is attached to
+     * the root node.
      *
      * @param node
      * @param parent
-     * @return {@code true} if the given getNode could be added as child to the
-     * given parent getNode and {@code false} otherwise.
+     * @return {@code true} if the given node could be added as child to the
+     * given parent node and {@code false} otherwise.
      */
     boolean addNode(GraphNode node, GraphNode parent);
 
     /**
-     * Completely removes the given getNode from this graph model by detaching
+     * Completely removes the given node from this graph model by detaching
      * it from its parent and deleting it from the underlying index structure.
      *
-     * @param node The getNode to remove.
-     * @return {@code true} if and only if the getNode could be removed or
+     * @param node The node to remove.
+     * @return {@code true} if and only if the node could be removed or
      * {@code false} otherwise.
      */
     boolean remove(GraphNode node);
 
     /**
-     * Makes {@code newParent} the new parent of {@code getNode}. Both nodes
+     * Makes {@code newParent} the new parent of {@code node}. Both nodes
      * must be part of this graph.
      *
      * @param node
@@ -83,7 +83,7 @@ public interface GraphModel {
     void moveNode(GraphNode node, GraphNode newParent);
 
     /**
-     * Clears the whole graph model by deleting all data including the getNode
+     * Clears the whole graph model by deleting all data including the node
      * elements.
      */
     void clear();
@@ -102,26 +102,4 @@ public interface GraphModel {
      * @param metric The metric to remove.
      */
     void removeMetric(Metric metric);
-
-    /**
-     *
-     * @param key
-     * @param name
-     * @return the new Metric with given key and name
-     */
-    Metric createMetric(String key, String name);
-
-    /**
-     *
-     * @param name
-     * @return a GraphNode Parent with given name and a unique id
-     */
-    GraphNode createParent(String name);
-
-    /**
-     *
-     * @param name
-     * @return a GraphNode Leaf with given name and a unique id
-     */
-    GraphNode createLeaf(String name);
 }

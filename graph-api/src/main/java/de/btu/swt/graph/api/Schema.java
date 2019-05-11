@@ -30,7 +30,7 @@ public interface Schema {
     Metric getMetric(String key);
 
     /**
-     * Adds the metric to the schema
+     * Adds the metric to the schema.
      *
      * @param metric
      * @return
@@ -38,7 +38,7 @@ public interface Schema {
     boolean add(Metric metric);
 
     /**
-     * Removes the metric of the schema
+     * Removes the metric of the schema.
      *
      * @param metric
      * @return
