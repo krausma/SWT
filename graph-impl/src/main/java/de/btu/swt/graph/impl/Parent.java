@@ -11,6 +11,7 @@ import java.util.Stack;
 import java.util.stream.Stream;
 import de.btu.swt.graph.impl.GraphNodeImpl;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,17 +21,18 @@ import java.util.stream.Collectors;
  */
 
 public class Parent extends GraphNodeImpl {
-    private long keyId; //unique ID of Node
-    private String nodeName; // Name of Node
-    private Parent p; // eventual parent of Node
+  
+     
+    
     private boolean root = true; //if Node Root
-    public List<GraphNode> Children; //List of Children of Node
+    public List<GraphNode> Children = new ArrayList();; //List of Children of Node
             
     //constructor of the Node
     public Parent (long id, String name){
         keyId = id;
         nodeName = name;
-        Children = new ArrayList<GraphNode>();
+      
+    //Children.sort((n1,n2) -> n1.getName().compareToIgnoreCase(n2.getName()));
     }
     
     // returns the ID
@@ -41,14 +43,14 @@ public class Parent extends GraphNodeImpl {
         if(index < 0 || index >= Children.size()){
             throw new IndexOutOfBoundsException();
         }else{
-            return Children.get(index);
+            return this.Children.get(index);
         }
     }
     
     // returns the number of childs
     @Override
     public int getChildCount() {
-       return p.Children.size();
+       return Children.size();
     }
     
     //returns all childs of this node
@@ -60,7 +62,7 @@ public class Parent extends GraphNodeImpl {
  
    
     
-    // checks if a parent  exists for this node
+   
  
     
     // checks if this node is a leaf/has no children
@@ -103,7 +105,7 @@ public class Parent extends GraphNodeImpl {
         }else{
             
             
-            for(int i = 1;i <= Children.size();i++){
+            for(int i = 0;i < Children.size();i++){
             des.addAll(this.Children.get(i).descendants().collect(Collectors.toList()));
             
             }

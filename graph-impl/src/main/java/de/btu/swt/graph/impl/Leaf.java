@@ -17,9 +17,7 @@ import java.util.stream.Stream;
  */
 
 public class Leaf extends GraphNodeImpl {
-    private long keyId;
-    private String nodeName;
-    private Parent p;
+ 
     private boolean root = true;
     
     public Leaf (long id, String name){
