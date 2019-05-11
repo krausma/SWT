@@ -62,6 +62,9 @@
         <module>graph-api</module>
         <module>graph-impl</module>
         <module>graph-ui</module>
+        <module>importer-api</module>
+        <module>importer-impl</module>
+        <module>importer-ui</module>
     </modules>
 
     <properties>
