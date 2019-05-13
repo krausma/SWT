@@ -1,0 +1,19 @@
+image: maven:3.6.0-jdk-8
+
+build-job:
+
+    cache:
+      paths:
+        - .m2/
+    variables:
+      MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+    tags:
+      - banquo-docker 
+    when: on_success
+    script:
+    - mvn clean install
+    - mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -D sonar.host.url=http://sstlab.informatik.tu-cottbus.de:9000 -D sonar.projectName=SWT-SoSe19 -D sonar.projectKey=SWT-SoSe19
+    artifacts:
+        expire_in: 1 week
+        paths:
+        - application/target/*.zip
