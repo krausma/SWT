@@ -9,6 +9,7 @@ import de.btu.swt.graph.api.GraphModel;
 import de.btu.swt.graph.api.GraphService;
 import org.openide.util.lookup.ServiceProvider;
 import java.util.Arrays;
+
 /**
  *
  * @author Sebastian Brueggemann <bruegber@b-tu.de>
@@ -18,7 +19,7 @@ public class GraphServiceImpl implements GraphService {
 
       // root Node + Model
        Parent root = new Parent(1,"root");
-      GraphModelImpl model = new GraphModelImpl(root);
+      GraphModelImpl model = new GraphModelImpl(root); ;
       
     @Override
     public GraphModel getModel() {
@@ -27,11 +28,12 @@ public class GraphServiceImpl implements GraphService {
 
     @Override
     public void createDefaultGraph1() {
-      
-      
+      model.clear();
+     
+        
       //other Nodes: 2 Parent-nodes + 4 Leaf-nodes
-      Parent p1 = new Parent (99, "p");
-      Parent p2 = new Parent (2, "o");
+      Parent p1 = new Parent (99, "p1");
+      Parent p2 = new Parent (2, "p2");
       Leaf l1 = new Leaf (3, "l1");
       Leaf l2 = new Leaf (4, "l2");
       Leaf l3 = new Leaf (5, "l3");
@@ -50,6 +52,9 @@ public class GraphServiceImpl implements GraphService {
     @Override
     public void createDefaultGraph2() {
     
+        model.clear();
+     
+
         //other Nodes: 2 Parent-nodes + 4 Leaf-nodes
       Parent p1 = new Parent (1, "p1");
       Parent p2 = new Parent (2, "p2");

@@ -17,10 +17,10 @@ import java.util.stream.Stream;
  */
 
 public abstract class GraphNodeImpl implements GraphNode {
-     long keyId;
+    long keyId;
     String nodeName;
-     Parent p; // eventual parent of Node
-    private boolean root = true;
+    Parent p; // eventual parent of Node
+    boolean root;
     
     
     
@@ -34,14 +34,7 @@ public abstract class GraphNodeImpl implements GraphNode {
         return nodeName;
     }
 
-    @Override
-    public abstract GraphNode getChildAt(int index);
-
-    @Override
-    public abstract int getChildCount();
-
-    @Override
-    public abstract Stream<GraphNode> children();
+ 
 
     @Override
     public GraphNode getParent() {
@@ -69,20 +62,7 @@ public abstract class GraphNodeImpl implements GraphNode {
         return !root;
     }
 
-    @Override
-    public abstract boolean isLeaf();
-
-    @Override
-    public abstract boolean isParentOf(GraphNode node);
-
-    @Override
-    public abstract int getIndexOf(GraphNode child);
-
-    @Override
-    public abstract Stream<GraphNode> descendants() ;
-
-    @Override
-    public abstract Stream<GraphNode> leafs();
+ 
     
     @Override
     public Stream<GraphNode> ancestors() {

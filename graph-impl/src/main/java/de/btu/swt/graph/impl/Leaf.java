@@ -18,11 +18,12 @@ import java.util.stream.Stream;
 
 public class Leaf extends GraphNodeImpl {
  
-    private boolean root = true;
+   
     
     public Leaf (long id, String name){
         keyId = id;
         nodeName = name;
+        root = true;
     }
     
     
