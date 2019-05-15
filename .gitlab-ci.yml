@@ -12,7 +12,7 @@ build-job:
     when: on_success
     script:
     - mvn clean install
-    - mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -D sonar.host.url=http://sstlab.informatik.tu-cottbus.de:9000 -D sonar.projectName=$CI_PROJECT_ID -D sonar.projectKey=$CI_PROJECT_ID
+    - mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -D sonar.host.url=http://sstlab.informatik.tu-cottbus.de:9000 -D sonar.projectName=$CI_PROJECT_NAME -D sonar.projectKey=$CI_PROJECT_NAME
     artifacts:
         expire_in: 1 week
         paths:
