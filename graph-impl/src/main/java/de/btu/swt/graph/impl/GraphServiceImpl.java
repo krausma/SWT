@@ -28,8 +28,8 @@ public class GraphServiceImpl implements GraphService {
 
     @Override
     public void createDefaultGraph1() {
-      model.clear();
-     
+      
+       model.clear();
         
       //other Nodes: 2 Parent-nodes + 4 Leaf-nodes
       Parent p1 = new Parent (99, "p1");
@@ -41,8 +41,8 @@ public class GraphServiceImpl implements GraphService {
       
       // put them into the model
       
-      model.addNode(p1, root);
-      model.addNode(p2, root);
+      model.addNode(p1, model.getRoot());
+      model.addNode(p2, model.getRoot());
       model.addNode(l1, p1);
       model.addNode(l2, p1);
       model.addNode(l3, p2);
@@ -64,9 +64,9 @@ public class GraphServiceImpl implements GraphService {
       Leaf l4 = new Leaf (6, "l4");
       
       // put them into the model
-      model.addNode(p1, root);
+      model.addNode(p1, model.getRoot());
       model.addNode(p2, p1);
-      model.addNode(l1, root);
+      model.addNode(l1, model.getRoot());
       model.addNode(l2, p1);
       model.addNode(l3, p2);
       model.addNode(l4, p2);

@@ -126,7 +126,7 @@ public class GraphModelImpl implements GraphModel{
     @Override
     public void clear() {
    
-        this.root.children().forEach(c -> c.setParent(null));
+        root = new Parent(0,"root");
     }
 
     @Override
