@@ -9,6 +9,8 @@ import de.btu.swt.graph.api.GraphModel;
 import de.btu.swt.graph.api.GraphNode;
 import de.btu.swt.graph.api.GraphService;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -49,7 +51,7 @@ public final class TreeViewTopComponent extends TopComponent implements Explorer
     private final BeanTreeView treeView;
     private final ExplorerManager explorer;
     private final GraphService graphService;
-
+    private final List<GraphEventListener> listeners = new ArrayList<>();
     public TreeViewTopComponent() {
         initComponents();
         setName(Bundle.CTL_TreeViewTopComponent());
@@ -139,7 +141,8 @@ public final class TreeViewTopComponent extends TopComponent implements Explorer
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        updateView();
+       updateView();
+        notifyListener(new GraphEvent(this,evt));
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnGraph1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraph1ActionPerformed
@@ -183,4 +186,21 @@ public final class TreeViewTopComponent extends TopComponent implements Explorer
     public ExplorerManager getExplorerManager() {
         return explorer;
     }
+    
+     public void addListener( GraphEventListener listener ) {
+      
+    if ( ! listeners.contains( listener ) )
+      listeners.add( listener );
+  }
+
+  public void removeListener( GraphEventListener listener ) {
+      
+    listeners.remove( listener );
+  }
+
+  public void notifyListener(GraphEvent event) {
+      
+    for ( GraphEventListener listener : listeners )
+      listener.onGraphChanged(event);
+  }
 }
