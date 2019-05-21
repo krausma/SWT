@@ -5,6 +5,7 @@
  */
 package de.btu.swt.graph.ui;
 
+import de.btu.swt.graph.api.GraphEventListener;
 import de.btu.swt.graph.api.GraphModel;
 import de.btu.swt.graph.api.GraphNode;
 import de.btu.swt.graph.api.GraphService;
@@ -51,7 +52,6 @@ public final class TreeViewTopComponent extends TopComponent implements Explorer
     private final BeanTreeView treeView;
     private final ExplorerManager explorer;
     private final GraphService graphService;
-    private final List<GraphEventListener> listeners = new ArrayList<>();
     public TreeViewTopComponent() {
         initComponents();
         setName(Bundle.CTL_TreeViewTopComponent());
@@ -59,6 +59,13 @@ public final class TreeViewTopComponent extends TopComponent implements Explorer
         this.graphService = Lookup.getDefault().lookup(GraphService.class);
         this.explorer = new ExplorerManager();
         this.treeView = new BeanTreeView();
+        this.graphService.getModel().attach(new GraphEventListener() {
+            @Override
+            public void onGraphChanged() {
+               
+                updateView();
+            }
+        });
         add(treeView, BorderLayout.CENTER);
     }
 
@@ -142,7 +149,6 @@ public final class TreeViewTopComponent extends TopComponent implements Explorer
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
        updateView();
-        notifyListener(new GraphEvent(this,evt));
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnGraph1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraph1ActionPerformed
@@ -187,20 +193,5 @@ public final class TreeViewTopComponent extends TopComponent implements Explorer
         return explorer;
     }
     
-     public void addListener( GraphEventListener listener ) {
-      
-    if ( ! listeners.contains( listener ) )
-      listeners.add( listener );
-  }
 
-  public void removeListener( GraphEventListener listener ) {
-      
-    listeners.remove( listener );
-  }
-
-  public void notifyListener(GraphEvent event) {
-      
-    for ( GraphEventListener listener : listeners )
-      listener.onGraphChanged(event);
-  }
 }

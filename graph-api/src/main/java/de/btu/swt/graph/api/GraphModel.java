@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  *
  * @author Sebastian Brueggemann <bruegber@b-tu.de>
  */
-public interface GraphModel {
+public interface GraphModel extends ObservableGraph{
 
     /**
      * @return The schema containing meta information (like metrics) for all the
@@ -34,7 +34,7 @@ public interface GraphModel {
 
     /**
      * @param id The id of the requested getNode.
-     * @return The getNode with the given id.
+        * @return The getNode with the given id.
      */
     GraphNode getNode(int id);
 
@@ -56,7 +56,7 @@ public interface GraphModel {
      * {@code null} is passed as argument for parent the getNode is attached to
      * the root getNode.
      *
-     * @param node
+     * @param node  
      * @param parent
      * @return {@code true} if the given getNode could be added as child to the
      * given parent getNode and {@code false} otherwise.

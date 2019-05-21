@@ -16,6 +16,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <useOSGiDependencies>true</useOSGiDependencies>
+                    <publicPackages>
+                        <publicPackage>de.btu.swt.graph.impl</publicPackage>
+                    </publicPackages>
                 </configuration>
             </plugin>
             <plugin>

@@ -5,10 +5,13 @@
  */
 package de.btu.swt.graph.impl;
 
+import de.btu.swt.graph.api.GraphEventListener;
 import de.btu.swt.graph.api.GraphModel;
 import de.btu.swt.graph.api.GraphNode;
 import de.btu.swt.graph.api.Metric;
+import de.btu.swt.graph.api.ObservableGraph;
 import de.btu.swt.graph.api.Schema;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,12 +26,13 @@ public class GraphModelImpl implements GraphModel{
 
     Schema schema;
     GraphNode root;
-  
+    List<GraphEventListener> listenerList = new ArrayList();
     
     
     public GraphModelImpl(GraphNode RootNode){
         root = RootNode;
     
+        notifyObserver();
     }
     
     @Override
@@ -97,6 +101,7 @@ public class GraphModelImpl implements GraphModel{
         }
         node.setParent(parent);
    
+        notifyObserver();
         return true;
     }
 
@@ -110,6 +115,8 @@ public class GraphModelImpl implements GraphModel{
         if(currentNode == null) { return false; }
         
         currentNode.setParent(null);
+        
+        notifyObserver();
         return true;
     }
 
@@ -121,24 +128,52 @@ public class GraphModelImpl implements GraphModel{
         if(! contains(newParent)) { return; }
         
         node.setParent(newParent);
+        notifyObserver();
     }
 
     @Override
     public void clear() {
    
         this.root.children().forEach(c -> c.setParent(null));
+        notifyObserver();
     }
 
     @Override
     public void addMetric(Metric metric) {
   
         this.schema.add(metric);
+        notifyObserver();
     }
 
     @Override
     public void removeMetric(Metric metric) {
   
         this.schema.remove(metric);
+        notifyObserver();
     }
-    
+
+    @Override
+    public void attach(GraphEventListener listener) {
+      
+        listenerList.add(listener);
+    }
+
+    @Override
+    public void detach(GraphEventListener listener) {
+        
+        listenerList.remove(listener);
+    }
+
+    @Override
+    public void notifyObserver() {
+       
+        
+        for ( GraphEventListener listener : listenerList ) {
+
+              listener.onGraphChanged();
+              
+        }
+    }
 }
+    
+
