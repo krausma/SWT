@@ -87,19 +87,4 @@ public interface GraphModel {
      * elements.
      */
     void clear();
-
-    /**
-     * Adds a new metric the corresponding node schema.
-     *
-     * @param metric The metric to add.
-     */
-    void addMetric(Metric metric);
-
-    /**
-     * Removes the given metric from the corresponding node schema and clear all
-     * related metric values.
-     *
-     * @param metric The metric to remove.
-     */
-    void removeMetric(Metric metric);
 }
