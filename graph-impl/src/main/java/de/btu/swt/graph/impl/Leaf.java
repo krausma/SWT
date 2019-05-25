@@ -20,8 +20,8 @@ public class Leaf extends GraphNodeImpl {
  
    
     
-    public Leaf (long id, String name){
-        keyId = id;
+    public Leaf (String name){
+        
         nodeName = name;
         root = true;
     }

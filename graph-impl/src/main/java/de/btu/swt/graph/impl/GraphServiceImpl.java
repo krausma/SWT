@@ -6,6 +6,8 @@
 package de.btu.swt.graph.impl;
 
 import de.btu.swt.graph.api.GraphModel;
+import de.btu.swt.graph.api.GraphNode;
+import de.btu.swt.graph.api.GraphNodeFactory;
 import de.btu.swt.graph.api.GraphService;
 import org.openide.util.lookup.ServiceProvider;
 import java.util.Arrays;
@@ -18,8 +20,9 @@ import java.util.Arrays;
 public class GraphServiceImpl implements GraphService {
 
       // root Node + Model
-       Parent root = new Parent(1,"root");
-      GraphModelImpl model = new GraphModelImpl(root); ;
+       Parent root = new Parent("root");
+      GraphModelImpl model = new GraphModelImpl(root); 
+      GraphNodeFactory graphNodeFactory = new GraphNodeFactoryImpl();
       
     @Override
     public GraphModel getModel() {
@@ -32,12 +35,12 @@ public class GraphServiceImpl implements GraphService {
        model.clear();
         
       //other Nodes: 2 Parent-nodes + 4 Leaf-nodes
-      Parent p1 = new Parent (99, "p1");
-      Parent p2 = new Parent (2, "p2");
-      Leaf l1 = new Leaf (3, "l1");
-      Leaf l2 = new Leaf (4, "l2");
-      Leaf l3 = new Leaf (5, "l3");
-      Leaf l4 = new Leaf (6, "l4");
+      GraphNode p1 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.PARENT, "p1");
+      GraphNode p2 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.PARENT, "p2");
+      GraphNode l1 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l1");
+      GraphNode l2 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l2");   
+      GraphNode l3 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l3");
+      GraphNode l4 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l4");   
       
       // put them into the model
       
@@ -56,12 +59,12 @@ public class GraphServiceImpl implements GraphService {
      
 
         //other Nodes: 2 Parent-nodes + 4 Leaf-nodes
-      Parent p1 = new Parent (1, "p1");
-      Parent p2 = new Parent (2, "p2");
-      Leaf l1 = new Leaf (3, "l1");
-      Leaf l2 = new Leaf (4, "l2");
-      Leaf l3 = new Leaf (5, "l3");
-      Leaf l4 = new Leaf (6, "l4");
+      GraphNode p1 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.PARENT, "p1");
+      GraphNode p2 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.PARENT, "p2");
+      GraphNode l1 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l1");
+      GraphNode l2 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l2");   
+      GraphNode l3 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l3");
+      GraphNode l4 = graphNodeFactory.createGraphNode(GraphNodeFactoryImpl.LEAF, "l4");  
       
       // put them into the model
       model.addNode(p1, model.getRoot());

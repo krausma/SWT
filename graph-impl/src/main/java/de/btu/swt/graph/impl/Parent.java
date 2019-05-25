@@ -27,8 +27,7 @@ public class Parent extends GraphNodeImpl {
      List<GraphNode> Children;
             
     //constructor of the Node
-    public Parent (long id, String name){
-        keyId = id;
+    public Parent (String name){
         nodeName = name;
         Children = new ArrayList();; //List of Children of Node
         root  = true; //if Node Root

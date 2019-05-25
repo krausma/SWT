@@ -134,7 +134,7 @@ public class GraphModelImpl implements GraphModel{
     @Override
     public void clear() {
    
-        this.root = new Parent(0, "root");
+        this.root = new Parent("root");
         notifyObserver();
     }
 
