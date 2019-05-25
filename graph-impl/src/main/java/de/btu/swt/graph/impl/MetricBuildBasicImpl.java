@@ -17,15 +17,17 @@ public class MetricBuildBasicImpl implements GraphMetricBuilder {
     private String BuildName;
     private static int uniqueKey = 0;
     private String key;
-    private float buildvalue;
-    public MetricBuildBasicImpl (float value, String name){
+    private float buildValue;
+    private String buildDescription;
+    
+    public MetricBuildBasicImpl (float value, String name, String description){
         this.Metric = new MetricImpl();
         
         uniqueKey++; // muss noch inkrementiert werden
         key = Integer.toString(uniqueKey);
-        this.buildvalue = value;
+        this.buildValue = value;
         this.BuildName = name;
-        
+        buildDescription = description;
 }
 
 
@@ -41,12 +43,12 @@ public class MetricBuildBasicImpl implements GraphMetricBuilder {
 
     @Override
     public void buildmetricDescription() {
-        Metric.setDescription("This is a basic Metric with just one attributes");
+        Metric.setDescription(buildDescription);
     }
 
     @Override
     public void buildotherAttributes() {
-         Metric.setValue(buildvalue);
+         Metric.setValue(buildValue);
     }
 
     @Override
