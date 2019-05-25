@@ -37,7 +37,7 @@ public class MetricBuildBasicImpl implements GraphMetricBuilder {
 
     @Override
     public void buildmetricDescription() {
-        Metric.setDescription("This is a basic Metric without fancy attributes");
+        Metric.setDescription("This is a basic Metric with just one attributes");
     }
 
     @Override
