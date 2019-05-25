@@ -11,6 +11,14 @@ package de.btu.swt.graph.api;
  */
 public interface Metric {
 
+    
+ 
+    
+    public void setKey(String key);
+    
+    public void setName(String name);
+    
+    public void setDescription(String Description);
     /**
      * @return The metric key.
      */
