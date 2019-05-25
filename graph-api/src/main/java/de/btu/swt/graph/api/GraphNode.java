@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  *
  * @author Sebastian Brueggemann <bruegber@b-tu.de>
  */
-public interface GraphNode {
+public interface GraphNode extends DataProvider {
 
     /**
      * Each graph element is defined by a unique long identifier. Multiple graph

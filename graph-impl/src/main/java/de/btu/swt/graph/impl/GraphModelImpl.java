@@ -139,14 +139,13 @@ public class GraphModelImpl implements GraphModel{
         notifyObserver();
     }
 
-    @Override
+
     public void addMetric(Metric metric) {
   
         this.schema.add(metric);
         notifyObserver();
     }
 
-    @Override
     public void removeMetric(Metric metric) {
   
         this.schema.remove(metric);

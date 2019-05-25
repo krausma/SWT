@@ -120,4 +120,16 @@ public class Parent extends GraphNodeImpl {
       return this.descendants().filter(l -> l.isLeaf());
     }
 
+    @Override
+    public float getValue(String metric) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setValue(String metric, float value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+
 }
