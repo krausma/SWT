@@ -8,6 +8,7 @@ package de.btu.swt.graph.impl;
 import de.btu.swt.graph.api.GraphEventListener;
 import de.btu.swt.graph.api.GraphModel;
 import de.btu.swt.graph.api.GraphNode;
+import de.btu.swt.graph.api.GraphNodeFactory;
 import de.btu.swt.graph.api.Metric;
 import de.btu.swt.graph.api.ObservableGraph;
 import de.btu.swt.graph.api.Schema;
@@ -27,7 +28,7 @@ public class GraphModelImpl implements GraphModel{
     Schema schema;
     GraphNode root;
     List<GraphEventListener> listenerList = new ArrayList();
-    
+    GraphNodeFactory factory = new GraphNodeFactoryImpl();
     
     public GraphModelImpl(GraphNode RootNode){
         root = RootNode;
@@ -134,7 +135,7 @@ public class GraphModelImpl implements GraphModel{
     @Override
     public void clear() {
    
-        this.root = new Parent("root");
+        this.root = factory.createGraphNode(GraphNodeFactoryImpl.PARENT, "root");
         notifyObserver();
     }
 

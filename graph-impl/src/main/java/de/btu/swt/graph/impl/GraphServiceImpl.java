@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class GraphServiceImpl implements GraphService {
 
       // root Node + Model
-       Parent root = new Parent("root");
+      Parent root = new Parent("root");
       GraphModelImpl model = new GraphModelImpl(root); 
       GraphNodeFactory graphNodeFactory = new GraphNodeFactoryImpl();
       

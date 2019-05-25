@@ -18,14 +18,16 @@ import java.util.stream.Stream;
 
 public abstract class GraphNodeImpl implements GraphNode {
     
-    private static long keyId;
+    private static long nodeId = 0;
+    private long keyId;
     String nodeName;
     Parent p; // eventual parent of Node
     boolean root;
 
     public GraphNodeImpl() {
         
-        keyId++;
+        nodeId++;
+        this.keyId = nodeId;
     }
     
     

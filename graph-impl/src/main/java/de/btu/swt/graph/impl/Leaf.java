@@ -22,6 +22,7 @@ public class Leaf extends GraphNodeImpl {
     
     public Leaf (String name){
         
+        super();
         nodeName = name;
         root = true;
     }

@@ -28,6 +28,8 @@ public class Parent extends GraphNodeImpl {
             
     //constructor of the Node
     public Parent (String name){
+        
+        super();
         nodeName = name;
         Children = new ArrayList();; //List of Children of Node
         root  = true; //if Node Root
