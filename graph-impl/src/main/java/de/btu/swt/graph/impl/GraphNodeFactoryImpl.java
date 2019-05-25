@@ -22,7 +22,7 @@ public class GraphNodeFactoryImpl implements GraphNodeFactory{
         
         if(nodeName == null || "".equals(nodeName)) {
             
-            return null;
+            nodeName = "Defaultname";
         }
         
         if(className.equals(PARENT)) {
