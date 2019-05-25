@@ -17,7 +17,7 @@ public interface GraphMetricBuilder {
     
     public void buildmetricDescription();
     
-    public void buildotherAttributes();
+    public void buildotherAttributes(float value);
     
     public Metric getMetric();
     

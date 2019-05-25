@@ -18,7 +18,9 @@ public interface Metric {
     
     public void setName(String name);
     
-    public void setDescription(String Description);
+    public void setDescription(String description);
+    
+    public void setValue(float value);
     /**
      * @return The metric key.
      */

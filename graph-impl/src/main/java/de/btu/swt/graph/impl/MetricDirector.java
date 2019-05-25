@@ -24,11 +24,11 @@ public class MetricDirector {
         return this.graphMetricBuilder.getMetric();
     }
     
-    public void buildmetric(String name){
+    public void buildmetric(String name, float value){
         
         this.graphMetricBuilder.buildmetricName(name);
         this.graphMetricBuilder.buildmetricDescription();
         this.graphMetricBuilder.buildmetrickey();
-        this.graphMetricBuilder.buildotherAttributes();
+        this.graphMetricBuilder.buildotherAttributes(value);
     }
  }

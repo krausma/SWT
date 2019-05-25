@@ -41,8 +41,8 @@ public class MetricBuildBasicImpl implements GraphMetricBuilder {
     }
 
     @Override
-    public void buildotherAttributes() {
-         // does nothing in basic Variant
+    public void buildotherAttributes(float value) {
+         Metric.setValue(value);
     }
 
     @Override

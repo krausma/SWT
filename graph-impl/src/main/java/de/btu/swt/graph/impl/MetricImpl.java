@@ -17,6 +17,7 @@ public class MetricImpl implements Metric {
     private String metricKey;
     private String metricName;
     private String metricDescription;
+    private float metricvalue;
     
     @Override
     public void setKey(String key) {
@@ -29,8 +30,8 @@ public class MetricImpl implements Metric {
     }
 
     @Override
-    public void setDescription(String Description) {
-        metricDescription = Description;
+    public void setDescription(String description) {
+        metricDescription = description;
     }
 
     @Override
@@ -56,6 +57,11 @@ public class MetricImpl implements Metric {
     @Override
     public float getUpperBound() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setValue(float value) {
+       metricvalue = value;
     }
     
 }
