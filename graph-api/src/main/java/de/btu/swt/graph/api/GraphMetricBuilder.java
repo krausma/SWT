@@ -13,11 +13,11 @@ public interface GraphMetricBuilder {
     
     public void buildmetrickey();
     
-    public void buildmetricName(String name);
+    public void buildmetricName();
     
     public void buildmetricDescription();
     
-    public void buildotherAttributes(float value);
+    public void buildotherAttributes();
     
     public Metric getMetric();
     

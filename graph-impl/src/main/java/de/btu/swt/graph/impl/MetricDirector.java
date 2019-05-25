@@ -26,9 +26,9 @@ public class MetricDirector {
     
     public void buildmetric(String name, float value){
         
-        this.graphMetricBuilder.buildmetricName(name);
+        this.graphMetricBuilder.buildmetricName();
         this.graphMetricBuilder.buildmetricDescription();
         this.graphMetricBuilder.buildmetrickey();
-        this.graphMetricBuilder.buildotherAttributes(value);
+        this.graphMetricBuilder.buildotherAttributes();
     }
  }
