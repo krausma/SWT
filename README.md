@@ -5,4 +5,4 @@ Gruppe: Lambda-Erleuchtete
 Gruppenmitglieder:  
 Johannes Kuhn  
 Marc Krause 
- 
+ # SWT
